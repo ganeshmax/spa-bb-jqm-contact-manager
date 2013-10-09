@@ -6,7 +6,7 @@ App.module('view', function(view, App, Backbone, Marionette, $, _) {
         tagName: 'ul',
         attributes: {
             'data-role': 'listview',
-            'data-inset': 'true'
+//            'data-inset': 'true'
         },
 
         onAfterItemAdded: function(itemView) {
