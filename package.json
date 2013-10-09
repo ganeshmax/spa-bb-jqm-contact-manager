@@ -1,0 +1,18 @@
+{
+    "name": "spa-bb-jqm-contact-manager",
+    "title": "Contact Manager",
+    "description": "Contact Manager using Backbone for structure and jQuery Mobile for UI",
+    "version": "0.0.1",
+    "author": "Ganeshji Marwaha",
+    "main": "server/app",
+    "engines": {
+        "node": "~0.10.13"
+    },
+    "dependencies": {
+        "express": ">=3.x"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib": "~0.7.0"
+    }
+}
