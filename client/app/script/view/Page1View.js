@@ -1,6 +1,6 @@
-App.module('View', function(View, App1, Backbone, Marionette, $, _) {
+App.module('view', function(view, App1, Backbone, Marionette, $, _) {
 
-    View.Page1View = Vmobile.PageView.extend({
+    view.Page1View = Vmobile.PageView.extend({
         template: TemplateUtil.getTemplate("client/app/script/template/Page1.html"),
 
 //        id: 'page1',
@@ -13,7 +13,7 @@ App.module('View', function(View, App1, Backbone, Marionette, $, _) {
         },
 
         gotoPage2: function(event) {
-            App.body.show(new App.View.Page2View());
+            App.body.show(new App.view.Page2View());
         }
     })
 });

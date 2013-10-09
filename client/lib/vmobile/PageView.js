@@ -1,4 +1,4 @@
-Vmobile.PageView = Marionette.ItemView.extend({
+Vmobile.PageView = Marionette.Layout.extend({
     tagName: 'div',
     attributes: {
         'data-role': 'page'
@@ -6,6 +6,13 @@ Vmobile.PageView = Marionette.ItemView.extend({
 
     id: "page-id-" + new Date().getTime(), // Give every page an id. User may override while instantiating
     type: 'page', // Not using this right now. May use it instead of isPage() or in combination later.
+
+    // Any page will have header, content and footer regions. This can be used by sub-classes to show()
+    regions: {
+//        header: "div[data-role=header]",
+        content: "div[data-role=content]"
+//        footer: "div[data-role=footer]"
+    },
 
     /**
      * Determines whether a given View is a PageView or not.

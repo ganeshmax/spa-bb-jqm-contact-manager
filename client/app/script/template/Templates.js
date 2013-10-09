@@ -30,6 +30,29 @@ __p += '<div data-role="header" data-position="fixed"  data-tap-toggle="false">\
 return __p
 };
 
+this["JST"]["client/app/script/template/ContactListItem.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p +=
+((__t = (name.first)) == null ? '' : __t) +
+' ' +
+((__t = (name.last)) == null ? '' : __t);
+
+}
+return __p
+};
+
+this["JST"]["client/app/script/template/ContactListPage.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '\r\n<div data-role="header" data-position="fixed"  data-tap-toggle="false">\r\n    <h1>Contacts</h1>\r\n</div>\r\n\r\n<div data-role="content">\r\n    <ul data-role="listview" data-inset="true">\r\n\r\n    </ul>\r\n</div>\r\n\r\n<div data-role="footer" data-position="fixed"  data-tap-toggle="false">\r\n    <h1>Contact Manager</h1>\r\n</div>\r\n\r\n';
+
+}
+return __p
+};
+
 this["JST"]["client/app/script/template/Page1.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
