@@ -6,13 +6,8 @@ var App = new Backbone.Marionette.Application({
     },
 
     onStart: function() {
-
-        // Create a singleton Contacts Collection and load it async
-        App.model.contacts = new App.model.Contacts();
-        App.model.contacts.doFetch();
-
         // Start with creating a new complete Page1View.
-        App.body.show(new App.view.ContactListPage());
+        App.body.show(new App.view.ContactListPageView());
     }
 });
 

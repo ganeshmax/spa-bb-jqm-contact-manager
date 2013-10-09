@@ -1,17 +1,19 @@
-Vmobile.PageView = Marionette.Layout.extend({
+Vmobile.JqmPageView = Marionette.Layout.extend({
     tagName: 'div',
+    id: null, // Give every page an id in initialize(). User may override while instantiating
     attributes: {
         'data-role': 'page'
     },
 
-    id: "page-id-" + new Date().getTime(), // Give every page an id. User may override while instantiating
     type: 'page', // Not using this right now. May use it instead of isPage() or in combination later.
 
     // Any page will have header, content and footer regions. This can be used by sub-classes to show()
     regions: {
-//        header: "div[data-role=header]",
-        content: "div[data-role=content]"
-//        footer: "div[data-role=footer]"
+        content: "div[data-role=content]>div.content"
+    },
+
+    events: {
+        'click a': 'gotoPage'
     },
 
     /**
@@ -23,19 +25,27 @@ Vmobile.PageView = Marionette.Layout.extend({
     },
 
     /**
-     * After finishing the bookkeeping work of calling the super class initialize(), setup a listener
-     * on this View's pagehide event. During pagehide, close() the view. This is necessary because, close() that
+     * After finishing the bookkeeping work of calling the super class constructor(), setup a listener
+     * on this View's jqm.pagehide event. During jqm.pagehide, close() the view. This is necessary because, close() that
      * is called by Region.show() has been replaced with a no-op below. That is required to have the transition
      * effect from page 1 to page 2.
      */
-    initialize: function() {
-        Marionette.ItemView.prototype.initialize.apply(this, Array.prototype.slice.call(arguments));
+    constructor: function() {
+        this.id = "page-id-" + new Date().getTime();
+
+        Marionette.Layout.prototype.constructor.apply(this, JsUtil.slice(arguments));
 
         var self = this;
-        this.$el.on('pagehide', function(event) {
+        this.$el.on(jqm.event.PAGE_HIDE, function(event) {
             console.log("Closing View with ID: " + this.id + " after pagehide");
             Marionette.ItemView.prototype.close.apply(self);
         });
+    },
+
+    gotoPage: function() {
+        var pageToNavigate = $(event.target).attr('href').substring(1) + 'View';
+        console.log("Page to navigate: " + pageToNavigate);
+        App.body.show(new App.view[pageToNavigate]());
     },
 
     /**

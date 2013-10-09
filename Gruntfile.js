@@ -32,6 +32,13 @@ module.exports = function (grunt) {
                 options: {
                     templateSettings: {
                         interpolate : /\{\{(.+?)\}\}/g
+                    },
+                    processName: function(fileName) {
+                        var searchString = 'template/';
+                        var beginIndex = fileName.indexOf(searchString) + searchString.length;
+                        var templateName = fileName.substring(beginIndex);
+                        console.log('Template Name: ' + templateName);
+                        return templateName;
                     }
                 },
                 files: {

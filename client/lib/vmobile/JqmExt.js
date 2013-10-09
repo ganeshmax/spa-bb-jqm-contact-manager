@@ -1,4 +1,9 @@
 var jqm = {
+    event: {
+        MOBILE_INIT: 'mobileinit',
+        PAGE_HIDE: 'pagehide'
+    },
+
     removeFrameworkFeatures: function() {
         // Disable handling links and form submissions using AJAX.
         // Disable hash listening and URLs will load as ordinary HTTP requests
@@ -14,19 +19,9 @@ var jqm = {
         // Disable pushState based hash fragments.
         // We want to use real hash fragments for our Backbone application
         $.mobile.pushStateEnabled = false;
-    },
-
-    removePageAfterTransitioningOut: function() {
-        // Remove page from DOM when it's being replaced
-        // TODO: Verify this behavior and replace this with .delegate() or .on() method as appropriate
-//        $('body').on('pagehide', 'div[data-role="page"]', function (event, ui) {
-//            $(event.currentTarget).remove();
-//        });
     }
 };
 
-$(document).bind("mobileinit", function () {
-
+$(document).bind(jqm.event.MOBILE_INIT, function () {
     jqm.removeFrameworkFeatures();
-    jqm.removePageAfterTransitioningOut();
 });
