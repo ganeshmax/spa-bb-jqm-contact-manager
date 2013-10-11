@@ -4,7 +4,7 @@ VMobile.showPage() or something like that.
 
 
 
-Link save and cancel buttons in contact entry page
+
 
 
 DONE:
@@ -16,3 +16,4 @@ Bottom tabs links are not active. Make them active after transition.
 
 Added Themes: Flat-UI Theme, ios-inspired and multiple graphite themes to the app.
 
+Link save and cancel buttons in contact entry page. added view and edit mode and made buttons appear and dissapear as appropriate.
