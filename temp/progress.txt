@@ -1,4 +1,18 @@
 TODO:
+Add a proper REGION for app developers to display page instead of the current App.body.showPage(). I think it should be something like
+VMobile.showPage() or something like that.
 
-data-transition:
-Pickup data-transition from the clicked link and from the incoming page and choose link version if there is a conflict.
+
+
+Link save and cancel buttons in contact entry page
+
+
+DONE:
+
+NR: data-transition: Pickup data-transition from the clicked link and from the incoming page and choose link version if there is a conflict.
+Bottom tabs links are not active. Make them active after transition.
+    added ui-btn-active to the links in navbar in all page templates. There is also only more called ui-data-persist, that some recommend, but that
+    is only when working within the scope of jqm framework and the page remains in the DOM. We don't have to care about that.
+
+Added Themes: Flat-UI Theme, ios-inspired and multiple graphite themes to the app.
+
