@@ -1,0 +1,53 @@
+
+/*********** MarionetteExt.js
+
+// Save a copy of the original open() method so that we can delegate to it if the view is not a page
+// TODO: Remove. This is no longer needed, because i have taken the approach to create a new Region.showPage() method
+// var oldMarionetteRegionOpen = Marionette.Region.prototype.open;
+// Replace open() method with an implementation that branches depending on whether the view is a page or not
+//Marionette.Region.prototype.open = function(view) {
+//
+//    // If View is a jqm page
+//    if(view.isPage && view.isPage()) {
+//        openPage(view);
+//    } else {
+//        oldMarionetteRegionOpen.apply(this, arguments);
+//    }
+//
+//};
+//
+//function openPage(page) {
+//    // Append the page's element to the DOM first
+//    var $el = page.$el;
+//    this.$el.append($el);
+//
+//    var clickedElement = event.target;
+//    var clickedLink = $(clickedElement).closest("a");
+//
+//
+//    setTimeout(function() {
+//        $.mobile.changePage($el, {changeHash:false, transition: 'slide'});
+//    }, 1);
+//}
+
+
+/************ JqmPageView.js
+
+    /**
+     * If this close() method is called, that means Region.show() has called it before showing the next view.
+     * Since this is a PageView, Region.open() will transition the existing view out before calling close
+     * In this.initialize() we have already setup to View.close() when the page hides. So, this close() essentially
+     * masks the close() method until the page is ready to be close()d
+     */
+    // TODO: Remove. No longer required as it is handled in Region
+//    close: function() {
+//        console.log("NOT Closing View with ID Yet: " + this.id + ". Page is yet to hide and thus removed.");
+//    }
+
+constructor:
+        // TODO: Remove. No longer required as it is handled in Region
+//        var self = this;
+//        this.$el.on(jqm.event.PAGE_HIDE, function(event) {
+//            console.log("Closing View with ID: " + this.id + " after pagehide");
+//            Marionette.ItemView.prototype.close.apply(self);
+//        });

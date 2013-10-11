@@ -1,0 +1,4 @@
+TODO:
+
+data-transition:
+Pickup data-transition from the clicked link and from the incoming page and choose link version if there is a conflict.

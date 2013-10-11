@@ -32,29 +32,15 @@ Vmobile.JqmPageView = Marionette.Layout.extend({
      */
     constructor: function() {
         this.id = "page-id-" + new Date().getTime();
-
         Marionette.Layout.prototype.constructor.apply(this, JsUtil.slice(arguments));
-
-        var self = this;
-        this.$el.on(jqm.event.PAGE_HIDE, function(event) {
-            console.log("Closing View with ID: " + this.id + " after pagehide");
-            Marionette.ItemView.prototype.close.apply(self);
-        });
     },
 
     gotoPage: function() {
-        var pageToNavigate = $(event.target).attr('href').substring(1) + 'View';
+        var $clickedLink = $(event.target).closest("a");
+        var clickedLinkHref = $clickedLink.attr('href');
+        var pageToNavigate = clickedLinkHref.substring(1) + 'View';
         console.log("Page to navigate: " + pageToNavigate);
-        App.body.show(new App.view[pageToNavigate]());
-    },
-
-    /**
-     * If this close() method is called, that means Region.show() has called it before showing the next view.
-     * Since this is a PageView, Region.open() will transition the existing view out before calling close
-     * In this.initialize() we have already setup to View.close() when the page hides. So, this close() essentially
-     * masks the close() method until the page is ready to be close()d
-     */
-    close: function() {
-        console.log("NOT Closing View with ID Yet: " + this.id + ". Page is yet to hide and thus removed.");
+        App.body.showPage(new App.view[pageToNavigate](), {transition: 'slide'});
     }
+
 });

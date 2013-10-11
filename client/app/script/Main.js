@@ -7,7 +7,7 @@ var App = new Backbone.Marionette.Application({
 
     onStart: function() {
         // Start with creating a new complete Page1View.
-        App.body.show(new App.view.ContactListPageView());
+        App.body.showPage(new App.view.ContactListPageView());
     }
 });
 
