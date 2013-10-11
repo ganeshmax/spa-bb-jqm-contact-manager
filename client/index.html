@@ -28,13 +28,19 @@
 
     <script src="lib/underscore/underscore-1.5.2.js"></script>
     <script src="lib/backbone/backbone-1.0.0.js"></script>
+    <!-- Needs to be immediately after backbone so that it can replace the Backbone.Model.extend, before others can use it -->
+    <script src="lib/backbone/backbone.cocktail-0.3.0.js"></script>
     <script src="lib/marionette/backbone.marionette-1.1.0.js"></script>
+
 
     <script src="lib/vmobile/JsUtil.js"></script>
     <script src="lib/vmobile/MarionetteExt.js"></script>
-    <script src="lib/vmobile/Namespace.js"></script>
+    <script src="lib/vmobile/VmobileInit.js"></script>
+
     <script src="lib/vmobile/JqmPageView.js"></script>
     <script src="lib/vmobile/JqmListView.js"></script>
+
+    <script src="lib/vmobile/automaticPageNavigation.js"></script>
 
     <script src="app/script/template/Templates.js"></script>
     <script src="app/script/utility/TemplateUtil.js"></script>
@@ -52,6 +58,8 @@
     <script src="app/script/view/ContactListPage/ContactListItemView.js"></script>
     <script src="app/script/view/ContactListPage/ContactListView.js"></script>
     <script src="app/script/view/ContactListPage/ContactListPageView.js"></script>
+
+    <script src="app/script/view/ContactEntryPage/ContactEntryPage.js"></script>
 
 </head>
 

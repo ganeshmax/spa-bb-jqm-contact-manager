@@ -8,6 +8,9 @@ So, that method will decide what transition to use, etc.
 
 data-rel=popup
     data-rel is typically not required, because a BB app with not use the automatic link binding of jqm
+data-rel=back on a "a" - not required
+
+data-add-back-btn on page: This is only when jqm handles navigation. Not applicable in BB
 
 Temp Ignored:
 data-role=dialog, data-rel=dialog
@@ -16,6 +19,8 @@ Eg: dialog is nothing but a page except for 2 things. 1. no history 2. style is 
 already disable the history anyways and it is handled manually. So, it is only the styling, but then, without the history
 component automatically applied, the styling may not accurately reflect the intention to the user. So, it is currently
 on hold, until i think of a better way to integrate with BB.
+
+
 
 Accounted:
 data-role

@@ -1,0 +1,7 @@
+var Vmobile = {
+
+    mixins: {
+
+    }
+};
+

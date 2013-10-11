@@ -12,9 +12,6 @@ Vmobile.JqmPageView = Marionette.Layout.extend({
         content: "div[data-role=content]>div.content"
     },
 
-    events: {
-        'click a': 'gotoPage'
-    },
 
     /**
      * Determines whether a given View is a PageView or not.
@@ -33,14 +30,7 @@ Vmobile.JqmPageView = Marionette.Layout.extend({
     constructor: function() {
         this.id = "page-id-" + new Date().getTime();
         Marionette.Layout.prototype.constructor.apply(this, JsUtil.slice(arguments));
-    },
-
-    gotoPage: function() {
-        var $clickedLink = $(event.target).closest("a");
-        var clickedLinkHref = $clickedLink.attr('href');
-        var pageToNavigate = clickedLinkHref.substring(1) + 'View';
-        console.log("Page to navigate: " + pageToNavigate);
-        App.body.showPage(new App.view[pageToNavigate](), {transition: 'slide'});
     }
 
 });
+
