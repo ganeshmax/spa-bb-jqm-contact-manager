@@ -1,7 +1,8 @@
 Vmobile.JqmListView  = Marionette.CollectionView.extend({
     tagName: 'ul',
     attributes: {
-        'data-role': 'listview'
+        'data-role': 'listview',
+        'data-inset': 'true'
     },
 
     // A flag to indicate that the listview has finished rendering to the el

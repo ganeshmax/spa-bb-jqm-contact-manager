@@ -2,7 +2,7 @@ TODO:
 Add a proper REGION for app developers to display page instead of the current App.body.showPage(). I think it should be something like
 VMobile.showPage() or something like that.
 
-
+Fix the autolinkhighlight for listview links until it loads the next page. Take inspiration from jqm source
 
 
 

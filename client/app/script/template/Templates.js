@@ -14,7 +14,7 @@ this["JST"]["ContactListPage/ContactListItem.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<a href="#">' +
+__p += '<a href="#Page1" data-btn-type="generic">' +
 ((__t = (name.first)) == null ? '' : __t) +
 ' ' +
 ((__t = (name.last)) == null ? '' : __t) +
