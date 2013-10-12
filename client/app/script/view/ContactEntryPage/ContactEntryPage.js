@@ -1,6 +1,6 @@
 App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
-    view.ContactEntryPageView = Z.PageView.extend({
+    view.ContactEntryPageView = Z.jqm.PageView.extend({
 
         mixins: [Z.mixins.autoLinkNavigation],
         template: TemplateUtil.getTemplate("ContactEntryPage/ContactEntryPage.html"),
@@ -29,7 +29,7 @@ App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
         cancelContact: function() {
             console.log("cancelContact()");
-            App.body.showPage(new App.view.ContactListPageView());
+            App.body.showPage(new App.view.ContactListPageView(), {transition: 'pop', reverse: true});
         },
 
         editContact: function() {

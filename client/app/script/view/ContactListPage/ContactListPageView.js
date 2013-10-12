@@ -1,10 +1,10 @@
 App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
-    view.ContactListPageView = Z.PageView.extend({
+    view.ContactListPageView = Z.jqm.PageView.extend({
 
         mixins: [
             Z.mixins.autoLinkNavigation,
-            Z.mixins.autoLinkHighlight
+//            Z.mixins.autoLinkHighlight
         ],
         template: TemplateUtil.getTemplate("ContactListPage/ContactListPage.html"),
 
@@ -24,7 +24,7 @@ App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
         showAddContactPage: function(event) {
             console.log('Clicked Add Contact Button');
-            App.body.showPage(new App.view.ContactEntryPageView(), {});
+            App.body.showPage(new App.view.ContactEntryPageView(), {transition: 'pop'});
         }
     })
 });

@@ -1,4 +1,4 @@
-Z.ListView  = Marionette.CollectionView.extend({
+Z.jqm.ListView  = Marionette.CollectionView.extend({
     tagName: 'ul',
     attributes: {
         'data-role': 'listview',

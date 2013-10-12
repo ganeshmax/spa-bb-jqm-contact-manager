@@ -1,5 +1,6 @@
 var Z = {
     util: {},
-    mixins: {}
+    mixins: {},
+    jqm: {}
 };
 

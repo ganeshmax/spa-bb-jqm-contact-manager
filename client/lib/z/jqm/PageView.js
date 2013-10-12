@@ -1,4 +1,4 @@
-Z.PageView = Marionette.Layout.extend({
+Z.jqm.PageView = Marionette.Layout.extend({
     tagName: 'div',
     id: null, // Give every page an id in initialize(). User may override while instantiating
     attributes: {
@@ -29,7 +29,7 @@ Z.PageView = Marionette.Layout.extend({
      */
     constructor: function() {
         this.id = "page-id-" + new Date().getTime();
-        Marionette.Layout.prototype.constructor.apply(this, JsUtil.slice(arguments));
+        Marionette.Layout.prototype.constructor.apply(this, arguments);
     }
 
 });
