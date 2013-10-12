@@ -1,4 +1,4 @@
-Vmobile.mixins.automaticPageNavigation = {
+Vmobile.mixins.autoLinkNavigation = {
 
     events: {
         "click a:jqmData(btn-type='generic')": 'gotoPage'

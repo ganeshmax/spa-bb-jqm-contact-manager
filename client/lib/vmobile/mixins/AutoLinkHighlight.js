@@ -1,4 +1,4 @@
-Vmobile.mixins.automaticLinkHighlight = {
+Vmobile.mixins.autoLinkHighlight = {
 
     events: {
         "click ul:jqmData(role='listview') li": 'highlightLink'
