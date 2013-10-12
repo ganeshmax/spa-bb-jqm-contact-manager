@@ -10,7 +10,11 @@ Vmobile.mixins.automaticPageNavigation = {
         var clickedLinkHref = $clickedLink.attr('href');
         var pageToNavigate = clickedLinkHref.substring(1) + 'View';
         console.log("Page to navigate: " + pageToNavigate);
-        App.body.showPage(new App.view[pageToNavigate](), {transition: 'slide'});
+        setTimeout(function() {
+            App.body.showPage(new App.view[pageToNavigate](), {transition: 'slide'});
+        }, 2000);
+
     }
 
 };
+
