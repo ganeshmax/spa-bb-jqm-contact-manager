@@ -4,7 +4,7 @@ VMobile.showPage() or something like that.
 
 Fix the autolinkhighlight for listview links until it loads the next page. Take inspiration from jqm source
 
-
+Change the name of Vmobile to Z and organize and rename other classes to make it uniform
 
 
 DONE:
