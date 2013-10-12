@@ -1,4 +1,4 @@
-Vmobile.JqmPageView = Marionette.Layout.extend({
+Z.PageView = Marionette.Layout.extend({
     tagName: 'div',
     id: null, // Give every page an id in initialize(). User may override while instantiating
     attributes: {

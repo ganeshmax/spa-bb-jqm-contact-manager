@@ -1,4 +1,4 @@
-Vmobile.JqmListView  = Marionette.CollectionView.extend({
+Z.ListView  = Marionette.CollectionView.extend({
     tagName: 'ul',
     attributes: {
         'data-role': 'listview',

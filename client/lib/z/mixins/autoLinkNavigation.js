@@ -1,4 +1,4 @@
-Vmobile.mixins.autoLinkNavigation = {
+Z.mixins.autoLinkNavigation = {
 
     events: {
         "click a:jqmData(btn-type='generic')": 'gotoPage'
@@ -12,8 +12,7 @@ Vmobile.mixins.autoLinkNavigation = {
         console.log("Page to navigate: " + pageToNavigate);
         setTimeout(function() {
             App.body.showPage(new App.view[pageToNavigate](), {transition: 'slide'});
-        }, 2000);
-
+        }, 1000);
     }
 
 };

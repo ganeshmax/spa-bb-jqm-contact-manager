@@ -1,4 +1,4 @@
-var jqm = {
+var jqmExt = {
     event: {
         MOBILE_INIT: 'mobileinit',
         PAGE_HIDE: 'pagehide'
@@ -22,6 +22,6 @@ var jqm = {
     }
 };
 
-$(document).bind(jqm.event.MOBILE_INIT, function () {
-    jqm.removeFrameworkFeatures();
+$(document).bind(jqmExt.event.MOBILE_INIT, function () {
+    jqmExt.removeFrameworkFeatures();
 });

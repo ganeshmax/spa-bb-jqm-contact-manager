@@ -1,5 +1,5 @@
 
-/*********** MarionetteExt.js
+/*********** marionetteExt.js
 
 // Save a copy of the original open() method so that we can delegate to it if the view is not a page
 // TODO: Remove. This is no longer needed, because i have taken the approach to create a new Region.showPage() method
@@ -31,7 +31,7 @@
 //}
 
 
-/************ JqmPageView.js
+/************ PageView.js
 
     /**
      * If this close() method is called, that means Region.show() has called it before showing the next view.

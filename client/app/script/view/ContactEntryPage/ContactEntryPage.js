@@ -1,8 +1,8 @@
 App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
-    view.ContactEntryPageView = Vmobile.JqmPageView.extend({
+    view.ContactEntryPageView = Z.PageView.extend({
 
-        mixins: [Vmobile.mixins.autoLinkNavigation],
+        mixins: [Z.mixins.autoLinkNavigation],
         template: TemplateUtil.getTemplate("ContactEntryPage/ContactEntryPage.html"),
 
         events: {

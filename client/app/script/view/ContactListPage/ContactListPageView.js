@@ -1,10 +1,10 @@
 App.module('view', function(view, App, Backbone, Marionette, $, _) {
 
-    view.ContactListPageView = Vmobile.JqmPageView.extend({
+    view.ContactListPageView = Z.PageView.extend({
 
         mixins: [
-            Vmobile.mixins.autoLinkNavigation,
-            Vmobile.mixins.autoLinkHighlight
+            Z.mixins.autoLinkNavigation,
+            Z.mixins.autoLinkHighlight
         ],
         template: TemplateUtil.getTemplate("ContactListPage/ContactListPage.html"),
 
