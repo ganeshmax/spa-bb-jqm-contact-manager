@@ -4,12 +4,14 @@ var App = new Z.Application({
     onStart: function() {
         // Load all contacts to begin with
         App.model.contacts = new App.model.Contacts();
-        App.model.contacts.fetch({reset: true});
+        App.model.contacts.fetch({reset: true}).done(function(data) {
 
-        // Start with creating a new complete Page1View.
-        App.body.showPage(new App.view.ContactListPageView({
-            collection: App.model.contacts
-        }));
+            // Start with creating a new complete Page1View.
+            App.body.showPage(new App.view.ContactListPageView({
+                collection: App.model.contacts
+            }));
+
+        });
     }
 });
 

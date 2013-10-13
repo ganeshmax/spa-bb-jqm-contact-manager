@@ -3,11 +3,9 @@ TODO:
 Add a proper REGION for app developers to display page instead of the current App.body.showPage(). I think it should be something like
 VMobile.showPage() or something like that.
 
-Fix the autolinkhighlight for listview links until it loads the next page. Take inspiration from jqm source
-
-Do collection fetch and reset in correct order in the render method to make it work as expected.
-
 Add a theme changer to the settings page.
+
+
 
 Remove Marionette.application. There seems to be over reliance on marionette. Replace with normal namespaces.
 
@@ -36,3 +34,10 @@ Added Themes: Flat-UI Theme, ios-inspired and multiple graphite themes to the ap
 Link save and cancel buttons in contact entry page. added view and edit mode and made buttons appear and dissapear as appropriate.
 
 Change the name of Vmobile to Z and organize and rename other classes to make it uniform.
+
+Fix the autolinkhighlight for listview links until it loads the next page. Take inspiration from jqm source
+
+Do collection fetch and reset in correct order in the render method to make it work as expected.
+
+Still the listview has some problems during the first load. It shows up unstyled list during the page load (rarely). I think it is because, we are not completing rendering before
+calling $.mobile.changePage() during the initial page load. FIX IT. FIXED by showing the new view after the initial collection is loaded using jqXhr.done().
