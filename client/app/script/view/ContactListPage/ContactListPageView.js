@@ -1,30 +1,32 @@
-App.module('view', function(view, App, Backbone, Marionette, $, _) {
+App.view.ContactListPageView = Z.jqm.PageView.extend({
 
-    view.ContactListPageView = Z.jqm.PageView.extend({
+    mixins: [
+        Z.mixins.autoLinkNavigation,
+        Z.mixins.autoLinkHighlight
+    ],
 
-        mixins: [
-            Z.mixins.autoLinkNavigation,
-//            Z.mixins.autoLinkHighlight
-        ],
-        template: TemplateUtil.getTemplate("ContactListPage/ContactListPage.html"),
+    template: Z.util.getTemplate("ContactListPage/ContactListPage.html"),
 
-        events: {
-            'click a#btnAddContact': 'showAddContactPage'
-        },
+    events: {
+        'click a#btnAddContact': 'showAddContactPage'
+    },
 
-        initialize: function() {
-            this.contactListView = new view.ContactListView({
-                collection: new App.model.Contacts()
-            });
-        },
+    initialize: function(options) {
 
-        onRender: function() {
-            this.content.show(this.contactListView);
-        },
+        // TODO: Dummy. Just so that auto link navigation works without collection.
+        var contacts = options.collection ? options.collection : App.model.contacts;
 
-        showAddContactPage: function(event) {
-            console.log('Clicked Add Contact Button');
-            App.body.showPage(new App.view.ContactEntryPageView(), {transition: 'pop'});
-        }
-    })
+        this.contactListView = new App.view.ContactListView({
+            collection: contacts
+        });
+    },
+
+    onRender: function() {
+        this.content.show(this.contactListView);
+    },
+
+    showAddContactPage: function(event) {
+        console.log('Clicked Add Contact Button');
+        App.body.showPage(new App.view.ContactEntryPageView(), {transition: 'pop'});
+    }
 });

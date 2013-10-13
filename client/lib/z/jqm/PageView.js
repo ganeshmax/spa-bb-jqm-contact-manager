@@ -1,4 +1,4 @@
-Z.jqm.PageView = Marionette.Layout.extend({
+Z.jqm.PageView = Z.Layout.extend({
     tagName: 'div',
     id: null, // Give every page an id in initialize(). User may override while instantiating
     attributes: {

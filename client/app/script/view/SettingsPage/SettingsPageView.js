@@ -1,9 +1,6 @@
-App.module('view', function(view, App, Backbone, Marionette, $, _) {
+App.view.SettingsPageView = Z.jqm.PageView.extend({
 
-    view.SettingsPageView = Z.jqm.PageView.extend({
+    mixins: [Z.mixins.autoLinkNavigation],
+    template: Z.util.getTemplate("SettingsPage/SettingsPage.html")
 
-        mixins: [Z.mixins.autoLinkNavigation],
-        template: TemplateUtil.getTemplate("SettingsPage/SettingsPage.html")
-
-    })
 });

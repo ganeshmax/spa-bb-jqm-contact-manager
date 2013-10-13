@@ -1,13 +1,25 @@
-var App = new Backbone.Marionette.Application({
 
-    // Custom events triggered and listened to by this app
-    EventType: {
-        DATE_CHANGED: "expense:dateChanged" // Dummy right now, just as an example
-    },
+var App = new Z.Application({
 
     onStart: function() {
+        // Load all contacts to begin with
+        App.model.contacts = new App.model.Contacts();
+        App.model.contacts.fetch({reset: true});
+
         // Start with creating a new complete Page1View.
-        App.body.showPage(new App.view.ContactListPageView());
+        App.body.showPage(new App.view.ContactListPageView({
+            collection: App.model.contacts
+        }));
+    }
+});
+
+_.extend(App, {
+    view: {},
+    model: {},
+    router: {},
+    util: {},
+    events: {
+        DATE_CHANGED: 'contact:dateChanged'
     }
 });
 

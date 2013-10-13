@@ -1,4 +1,4 @@
-Z.jqm.ListView  = Marionette.CollectionView.extend({
+Z.jqm.ListView  = Z.CollectionView.extend({
     tagName: 'ul',
     attributes: {
         'data-role': 'listview',
@@ -18,6 +18,6 @@ Z.jqm.ListView  = Marionette.CollectionView.extend({
      * @param itemView
      */
     onAfterItemAdded: function(itemView) {
-        this.$el.listview('refresh');
+        // this.$el.listview('refresh');
     }
 });

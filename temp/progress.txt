@@ -1,16 +1,31 @@
 TODO:
+====
 Add a proper REGION for app developers to display page instead of the current App.body.showPage(). I think it should be something like
 VMobile.showPage() or something like that.
 
 Fix the autolinkhighlight for listview links until it loads the next page. Take inspiration from jqm source
 
-Change the name of Vmobile to Z and organize and rename other classes to make it uniform.
-
 Do collection fetch and reset in correct order in the render method to make it work as expected.
 
+Add a theme changer to the settings page.
+
+Remove Marionette.application. There seems to be over reliance on marionette. Replace with normal namespaces.
+
+perform a setElement on every Marionette views so that the templates can be full HTML instead of only content of the root.
+
+MULTI APP CONTAINER:
+--------------------
+Marionette Application can be used to build a container app that holds multiple sub-applications.
+The container app will show a dashboard of client applications. When one sub-application is selected, we can start() it.
+When the user comes out of that sub-application, we can stop() it (or not).
+sub-applications can be made to communicate between each other using events. That way they are not directly coupled.
+Each sub-application should also be structured as a separate application so that they can be run isolated. Since events are used to communicate between sub-apps, they will not break.
+Each sub-application or the whole container application can also be run as mobile web app (if required).
+Updates can be made using bootstrap component for individual or the whole application.
+We may also allow for the sub-applications to be built using different technologies, but disabling a few features like inter app communication.
 
 DONE:
-
+====
 NR: data-transition: Pickup data-transition from the clicked link and from the incoming page and choose link version if there is a conflict.
 Bottom tabs links are not active. Make them active after transition.
     added ui-btn-active to the links in navbar in all page templates. There is also only more called ui-data-persist, that some recommend, but that
@@ -19,3 +34,5 @@ Bottom tabs links are not active. Make them active after transition.
 Added Themes: Flat-UI Theme, ios-inspired and multiple graphite themes to the app.
 
 Link save and cancel buttons in contact entry page. added view and edit mode and made buttons appear and dissapear as appropriate.
+
+Change the name of Vmobile to Z and organize and rename other classes to make it uniform.

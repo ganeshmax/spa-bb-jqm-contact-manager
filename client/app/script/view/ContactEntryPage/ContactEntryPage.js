@@ -1,51 +1,52 @@
-App.module('view', function(view, App, Backbone, Marionette, $, _) {
+App.view.ContactEntryPageView = Z.jqm.PageView.extend({
 
-    view.ContactEntryPageView = Z.jqm.PageView.extend({
+    mixins: [
+        Z.mixins.autoLinkNavigation,
+        Z.mixins.autoLinkHighlight
+    ],
 
-        mixins: [Z.mixins.autoLinkNavigation],
-        template: TemplateUtil.getTemplate("ContactEntryPage/ContactEntryPage.html"),
+    template: Z.util.getTemplate("ContactEntryPage/ContactEntryPage.html"),
 
-        events: {
-            'click #btnSaveContact': 'saveContact',
-            'click #btnCancelContact': 'cancelContact',
-            'click #btnEditContact': 'gotoEditMode'
-        },
+    events: {
+        'click #btnSaveContact': 'saveContact',
+        'click #btnCancelContact': 'cancelContact',
+        'click #btnEditContact': 'gotoEditMode'
+    },
 
-        /**
-         * Send options with
-         *      "mode"
-         * @param options
-         */
-        initialize: function(options) {
-            this.options.mode = options.mode ? options.mode : 'edit';
-            this.$el.addClass(this.options.mode)
-        },
+    /**
+     * Send options with
+     *      "mode"
+     * @param options
+     */
+    initialize: function(options) {
+        this.options.mode = options.mode ? options.mode : 'edit';
+        this.$el.addClass(this.options.mode)
+    },
 
 
-        saveContact: function() {
-            console.log("saveContact()");
-            this.gotoViewMode();
-        },
+    saveContact: function() {
+        console.log("saveContact()");
+        this.gotoViewMode();
+    },
 
-        cancelContact: function() {
-            console.log("cancelContact()");
-            App.body.showPage(new App.view.ContactListPageView(), {transition: 'pop', reverse: true});
-        },
+    cancelContact: function() {
+        console.log("cancelContact()");
+        App.body.showPage(new App.view.ContactListPageView(), {transition: 'pop', reverse: true});
+    },
 
-        editContact: function() {
-            console.log("editContact()");
-            this.gotoEditMode();
-        },
+    editContact: function() {
+        console.log("editContact()");
+        this.gotoEditMode();
+    },
 
-        gotoEditMode: function() {
-            console.log("gotoEditMode()");
-            this.$el.removeClass("view").removeClass("edit").addClass("edit");
-        },
+    gotoEditMode: function() {
+        console.log("gotoEditMode()");
+        this.$el.removeClass("view").removeClass("edit").addClass("edit");
+    },
 
-        gotoViewMode: function() {
-            console.log("gotoViewMode()");
-            this.$el.removeClass("view").removeClass("edit").addClass("view");
-        }
+    gotoViewMode: function() {
+        console.log("gotoViewMode()");
+        this.$el.removeClass("view").removeClass("edit").addClass("view");
+    }
 
-    })
 });

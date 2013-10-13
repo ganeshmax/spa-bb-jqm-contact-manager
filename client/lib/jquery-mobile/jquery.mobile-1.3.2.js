@@ -3913,7 +3913,7 @@
         //return the original document base url
         $.mobile.getDocumentBase = path.getDocumentBase;
 
-        /* internal utility functions */
+        /* internal util functions */
 
         // NOTE Issue #4950 Android phonegap doesn't navigate back properly
         //      when a full page refresh has taken place. It appears that hashchange
@@ -6226,7 +6226,7 @@
                 t.refresh( true );
             },
 
-            // This is a generic utility method for finding the first
+            // This is a generic util method for finding the first
             // node with a given nodeName. It uses basic DOM traversal
             // to be fast and is meant to be a substitute for simple
             // $.fn.closest() and $.fn.children() calls on a single

@@ -1,7 +1,7 @@
-App.module('view', function(view, App, Backbone, Marionette, $, _) {
-
-    view.Page2View = Z.jqm.PageView.extend({
-        mixins: [Z.mixins.autoLinkNavigation],
-        template: TemplateUtil.getTemplate('Page2.html')
-    })
+App.view.Page2View = Z.jqm.PageView.extend({
+    mixins: [
+        Z.mixins.autoLinkNavigation,
+        Z.mixins.autoLinkHighlight
+    ],
+    template: Z.util.getTemplate('Page2.html')
 });
