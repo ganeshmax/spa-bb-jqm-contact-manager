@@ -58,9 +58,11 @@ _.extend(Marionette.Region.prototype, {
         // Append the page's element to the DOM first
         this.$el.append($nextPageEl);
 
-        setTimeout(function() {
+        // TODO: Verify. Sometimes the page change is not happening properly without giving a tick to the browser.
+        // Will be enabling and disabling timeout back and forth while testing this.
+//        setTimeout(function() {
             $.mobile.changePage($nextPageEl, options);
-        }, 1);
+//        }, 0);
     },
 
     /**
@@ -73,6 +75,7 @@ _.extend(Marionette.Region.prototype, {
     closePage: function(currentPage) {
         if (!currentPage || currentPage.isClosed){ return; }
 
+        var self = this;
         currentPage.$el.on(jqmExt.event.PAGE_HIDE, function(event) {
             console.log("Closing Page with ID: " + this.id + " after pagehide");
 
@@ -80,9 +83,11 @@ _.extend(Marionette.Region.prototype, {
             if (currentPage.close) { currentPage.close(); }
             else if (currentPage.remove) { currentPage.remove(); }
 
+
             // if there is no current page, close() will never get called,
             // if there was a current page, close() will be called on pagehide
-            Marionette.triggerMethod.call(this, "close");
+            // This method calls close() on region, which in turn triggers 'close' on region and view
+            Marionette.triggerMethod.call(self, "close");
         });
     }
 

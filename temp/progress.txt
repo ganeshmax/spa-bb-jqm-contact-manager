@@ -5,11 +5,16 @@ VMobile.showPage() or something like that.
 
 Add a theme changer to the settings page.
 
-
-
 Remove Marionette.application. There seems to be over reliance on marionette. Replace with normal namespaces.
 
 perform a setElement on every Marionette views so that the templates can be full HTML instead of only content of the root.
+
+Since I added data-id to the header to stop it from participating in the transition, If there are elements between pages which appear to have some transition effects during page transition,
+add a data-transition=none to them so that they don't happen. Verify this behaviour by adding header elements before coding in the data-transition.
+
+Change all div[data-role=content] style to jqmData style
+
+Test iscroll on div.content, if it does mid-scroll only. That will prove the necessity of div.content inside div[data-role=content].
 
 MULTI APP CONTAINER:
 --------------------
@@ -41,3 +46,30 @@ Do collection fetch and reset in correct order in the render method to make it w
 
 Still the listview has some problems during the first load. It shows up unstyled list during the page load (rarely). I think it is because, we are not completing rendering before
 calling $.mobile.changePage() during the initial page load. FIX IT. FIXED by showing the new view after the initial collection is loaded using jqXhr.done().
+
+Added data-id to the header as well to make the header persistent. It started working from jqm 1.1 onwards.
+
+Tap instead of Click:
+Used "tap" event (vclick is another option) instead of the regular click events so that the 300 ms delay that browsers introduce to handle double click is minimzed.
+Before doing this, the click event was noticeably slow to respond. But that added its own set of complexities because, now there was a ghost click.
+Check out https://developers.google.com/mobile/articles/fast_buttons. The solution was to event.preventDefault() on tap.
+
+setTimeout() during changePage():
+Earlier, some rendering issues arose when changePage() was executed. So, i used a setTimeout(0) to give the browser a tick before changePage occurs. In MarionetteExt.
+But, that introduced noticeable flicker in the UI transition. Now, i have removed the setTimeout() and do not notice rendering issues, and the flicker is gone.
+This is something to keep in mind while developing jQuery mobile apps. I think, earlier, i could have done some mistake that was shadowed by setTimeout(). But now,
+i probably must have fixed the bugs and the setTimeout() is not necessary. Only time will tell.
+
+div[data-role=content]>div.content:
+Added a standard div.content to the div[data-role=content] for a few reasons.
+1. We may show different things inside the content section during the lifecycle of the page. We may not want some existing elements to be disturbed during this process.
+The existing elements can be achieved by having them in the header or footer. But, what if we don't want to. That is the reason why there is another layer of div.
+2. iScroll works with a wrapper and a scroller. In this case, div[data-role=content] can be used as a wrapper and div.content can be used as a scroller.
+Since this becomes the standard it makes more sense to have the additional element.
+3. Since jqm by default doesn't use overflow:scroll for any elements, the div[data-role=content] is not restricted between the header and the footer.
+That is, its height is not total - (header + footer). Instead its height is TOTAL, but it adds a padding to the top and bottom of the content to make it seem like it is in between
+the header and footer. In JQM, the full page scrolls, not just the content. They only employ position:fixed and not the overflow:scroll and for good reasons, mostly support.
+But, this means that the scrollbar will go through the top of the page into the header, which is not a problem. But it could not be the case if we used dov.content to be the scroller.
+This doesn't have the padding and it appears after the padding as well. That means, this could potentially represent true mid scrolling.
+ WILL HAVE TO TEST THAT THOUGH.
+

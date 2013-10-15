@@ -8,7 +8,7 @@ App.view.ContactListPageView = Z.jqm.PageView.extend({
     template: Z.util.getTemplate("ContactListPage/ContactListPage.html"),
 
     events: {
-        'click a#btnAddContact': 'showAddContactPage'
+        'tap a#btnAddContact': 'showAddContactPage'
     },
 
     initialize: function(options) {
@@ -26,6 +26,7 @@ App.view.ContactListPageView = Z.jqm.PageView.extend({
     },
 
     showAddContactPage: function(event) {
+        event.preventDefault();
         console.log('Clicked Add Contact Button');
         App.body.showPage(new App.view.ContactEntryPageView(), {transition: 'pop'});
     }

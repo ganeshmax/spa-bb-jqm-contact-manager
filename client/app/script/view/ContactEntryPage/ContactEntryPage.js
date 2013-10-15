@@ -8,9 +8,9 @@ App.view.ContactEntryPageView = Z.jqm.PageView.extend({
     template: Z.util.getTemplate("ContactEntryPage/ContactEntryPage.html"),
 
     events: {
-        'click #btnSaveContact': 'saveContact',
-        'click #btnCancelContact': 'cancelContact',
-        'click #btnEditContact': 'gotoEditMode'
+        'tap #btnSaveContact': 'saveContact',
+        'tap #btnCancelContact': 'cancelContact',
+        'tap #btnEditContact': 'gotoEditMode'
     },
 
     /**
@@ -24,17 +24,20 @@ App.view.ContactEntryPageView = Z.jqm.PageView.extend({
     },
 
 
-    saveContact: function() {
+    saveContact: function(event) {
+        event.preventDefault();
         console.log("saveContact()");
         this.gotoViewMode();
     },
 
-    cancelContact: function() {
+    cancelContact: function(event) {
+        event.preventDefault();
         console.log("cancelContact()");
         App.body.showPage(new App.view.ContactListPageView(), {transition: 'pop', reverse: true});
     },
 
-    editContact: function() {
+    editContact: function(event) {
+        event.preventDefault();
         console.log("editContact()");
         this.gotoEditMode();
     },
