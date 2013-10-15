@@ -29,7 +29,12 @@ Z.jqm.PageView = Z.Layout.extend({
      */
     constructor: function() {
         this.id = "page-id-" + new Date().getTime();
-        Marionette.Layout.prototype.constructor.apply(this, arguments);
+        Marionette.Layout.prototype.constructor.apply(this, Z.util.slice(arguments));
+    },
+
+    render: function(){
+        var result = Marionette.Layout.prototype.render.apply(this, Z.util.slice(arguments));
+        return result;
     }
 
 });

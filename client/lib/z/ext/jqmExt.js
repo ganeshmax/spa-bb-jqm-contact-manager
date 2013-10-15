@@ -19,6 +19,7 @@ var jqmExt = {
         // Disable pushState based hash fragments.
         // We want to use real hash fragments for our Backbone application
         $.mobile.pushStateEnabled = false;
+
     }
 };
 
