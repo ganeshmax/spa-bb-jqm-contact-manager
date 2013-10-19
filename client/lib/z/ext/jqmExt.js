@@ -22,7 +22,7 @@ var jqmExt = {
 
         // Disable by setting to 999.
         // This will not show the scrolled position when the user goes back to the prev page
-        $.mobile.minScrollBack = 999;
+//        $.mobile.minScrollBack = 999;
 
     }
 };
