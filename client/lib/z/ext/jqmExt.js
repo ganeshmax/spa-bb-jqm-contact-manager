@@ -20,6 +20,10 @@ var jqmExt = {
         // We want to use real hash fragments for our Backbone application
         $.mobile.pushStateEnabled = false;
 
+        // Disable by setting to 999.
+        // This will not show the scrolled position when the user goes back to the prev page
+        $.mobile.minScrollBack = 999;
+
     }
 };
 

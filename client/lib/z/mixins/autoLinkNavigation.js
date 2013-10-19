@@ -5,7 +5,7 @@ Z.mixins.autoLinkNavigation = {
     },
 
     gotoPage: function(event) {
-        console.log("Generic GotoPage Called");
+        console.log("Generic GotoPage Called 1");
 
         // This is to ensure that a ghost click doesn't happen
         // https://developers.google.com/mobile/articles/fast_buttons
@@ -17,9 +17,9 @@ Z.mixins.autoLinkNavigation = {
         transition = transition ? transition : 'slide';
 
         // TODO: Remove. Temporary for testing
-//        if(transition === 'none') {
-//            transition = 'fade';
-//        }
+        if(transition === 'none') {
+            transition = 'fade';
+        }
 
         var isReverse = $clickedLink.jqmData('reverse');
         isReverse = (isReverse === 'true') ? true : false

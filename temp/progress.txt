@@ -16,6 +16,8 @@ Change all div[data-role=content] style to jqmData style
 
 Test iscroll on div.content, if it does mid-scroll only. That will prove the necessity of div.content inside div[data-role=content].
 
+Add content-wrapper and content-scroller classes to incorporate iscroll or iscrollview in the future.
+
 MULTI APP CONTAINER:
 --------------------
 Marionette Application can be used to build a container app that holds multiple sub-applications.
@@ -73,3 +75,8 @@ But, this means that the scrollbar will go through the top of the page into the 
 This doesn't have the padding and it appears after the padding as well. That means, this could potentially represent true mid scrolling.
  WILL HAVE TO TEST THAT THOUGH.
 
+Removed iscrollview. Currently focussing on getting the jquery mobile normal scroll working because that sounds to be the best option.
+This is because the whole page is actually getting scrolled using the default/native browser scroll for whole page. That is because, they
+use only position:fixed for the headers and footers and no overflow:scroll concept, as it is not required only in a header and footer fixed
+scenario. This makes for good scrolling effect. We don't need iscroll unless you want to scroll parts of the content individually
+which may not be required in many usecases.

@@ -1,0 +1,9 @@
+Problem:
+When going down a long list of items in 1 page and then clicking on a button to go to a new page, resulted in
+the new page being shown somewhere down as well. This was not supposed to happen though.
+
+Solution:
+used minScrollBack option set to 999 to disable it. This is actually used to prevent the page from scrolling down
+to the original position when the user was returning to the prev screen. but in my situation, it worked well for
+the problem.
+

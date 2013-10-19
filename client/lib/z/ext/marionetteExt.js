@@ -87,7 +87,7 @@ _.extend(Marionette.Region.prototype, {
             // if there is no current page, close() will never get called,
             // if there was a current page, close() will be called on pagehide
             // This method calls close() on region, which in turn triggers 'close' on region and view
-            Marionette.triggerMethod.call(self, "close");
+            Marionette.triggerMethod.call(this, "close");
         });
     }
 
