@@ -1,8 +1,8 @@
 App.view.ContactEntryPageView = Z.jqm.PageView.extend({
 
     mixins: [
-        Z.mixins.autoLinkNavigation,
-        Z.mixins.autoLinkHighlight
+        Z.mixins.autoLinkNavigable,
+        Z.mixins.autoLinkHighlightable
     ],
 
     template: Z.util.getTemplate("ContactEntryPage/ContactEntryPage.html"),

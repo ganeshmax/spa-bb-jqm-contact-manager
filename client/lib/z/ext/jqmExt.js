@@ -1,7 +1,13 @@
 var jqmExt = {
-    event: {
+    EVENT: {
         MOBILE_INIT: 'mobileinit',
-        PAGE_HIDE: 'pagehide'
+        PAGE_HIDE: 'pagehide',
+        PAGE_SHOW: 'pageshow',
+        PAGE_CHANGE: 'pagechange'
+    },
+
+    EXPR: {
+        ISCROLL_ENABLED: ":jqmData(iscroll='enable')"
     },
 
     removeFrameworkFeatures: function() {
@@ -27,6 +33,6 @@ var jqmExt = {
     }
 };
 
-$(document).bind(jqmExt.event.MOBILE_INIT, function () {
+$(document).on(jqmExt.EVENT.MOBILE_INIT, function () {
     jqmExt.removeFrameworkFeatures();
 });

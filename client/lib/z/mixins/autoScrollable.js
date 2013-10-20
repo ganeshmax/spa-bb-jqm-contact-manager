@@ -1,4 +1,4 @@
-Z.mixins.iscrollScrolling = {
+Z.mixins.autoScrollable = {
 
     attributes: {
         'data-iscroll': 'enable'
@@ -7,7 +7,11 @@ Z.mixins.iscrollScrolling = {
     safariWindowHeightFix: 34,
     myScroll: null,
 
-    openScrolling: function() {
+    isScrollerEnabled: function() {
+        return true;
+    },
+
+    openScroller: function() {
 
         // XXX: fix crumbled css in transition changePage for jquery mobile 1.0a3 in jquery.mobile.navigation.js
         // changePage in loadComplete in removeContainerClasses in .removeClass(pageContainerClasses.join(" "));
@@ -61,7 +65,7 @@ Z.mixins.iscrollScrolling = {
         }
     },
 
-    closeScrolling: function() {
+    closeScroller: function() {
         if(this.myScroll) {
             this.myScroll.destroy();
         }

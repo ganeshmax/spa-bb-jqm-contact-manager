@@ -1,4 +1,4 @@
-Z.mixins.autoLinkNavigation = {
+Z.mixins.autoLinkNavigable = {
 
     events: {
         "click a:jqmData(btn-type='generic')": 'gotoPage'

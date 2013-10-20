@@ -65,15 +65,14 @@ _.extend(Marionette.Region.prototype, {
         // pagechange is the right event.
         // But pagechange seems to be fired on document and not on the page.
         // TODO: Make this clean.
-        $(document).on("pagechange", function() {
+        // TODO: Check if using data-xxx check is better or mixin check is good enough
+        // TODO: Check this event and what is the parameter and if we need to check if the nextPage is the one that is changing
+        $(document).on(jqmExt.EVENT.PAGE_CHANGE, function() {
             console.log("on pagechange");
 
-            if($nextPageEl.is(":jqmData(iscroll='enable')")) {
-                console.log("OPEN: page is iscroll enabled");
-                if(nextPage.openScrolling) {
-                    console.log("OPEN: openScrolling available in page");
-                    nextPage.openScrolling();
-                }
+            if(nextPage.isScrollerEnabled() && nextPage.openScroller) {
+                console.log("OPEN PAGE: Scroller Enabled and openScroller is available");
+                nextPage.openScroller();
             }
 
             self.currentView = nextPage;
@@ -103,21 +102,20 @@ _.extend(Marionette.Region.prototype, {
     closePage: function(currentPage) {
         if (!currentPage || currentPage.isClosed){ return; }
 
-        var $cuurentPageEl = currentPage.$el;
+        var $currentPageEl = currentPage.$el;
         var self = this;
-        $cuurentPageEl.on(jqmExt.event.PAGE_HIDE, function(event) {
+
+        // TODO: Check if the event should be attached to document? etc.
+        $currentPageEl.on(jqmExt.EVENT.PAGE_HIDE, function(event) {
             console.log("Closing Page with ID: " + this.id + " after pagehide");
 
             // call 'close' or 'remove', depending on which is found
             if (currentPage.close) { currentPage.close(); }
             else if (currentPage.remove) { currentPage.remove(); }
 
-            if($cuurentPageEl.is(":jqmData(iscroll='enable')")) {
-                console.log("CLOSE: page is iscroll enabled");
-                if(currentPage.closeScrolling) {
-                    console.log("CLOSE: closeScrolling available in page");
-                    currentPage.closeScrolling();
-                }
+            if(currentPage.isScrollerEnabled() && currentPage.closeScroller) {
+                console.log("CLOSE PAGE: Scroller Enabled and closeScroller is available");
+                currentPage.closeScroller();
             }
 
             // if there is no current page, close() will never get called,
