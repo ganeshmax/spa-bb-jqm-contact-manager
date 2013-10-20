@@ -16,53 +16,81 @@ _.extend(Marionette.Region.prototype, {
      * page before show()ing the new page. Instead it show()s the new page with transition and attaches an event handler
      * on pagehide to close() the previous page.
      *
-     * @param page - the page to transition into using jqm $.mobile.changePage()
+     * @param nextPage - the page to transition into using jqm $.mobile.changePage()
      * @param options - transition and other options that can be directly given to $.mobile.changePage().
      *                  supplied by the caller.
      */
-    showPage: function(page, options) {
+    showPage: function(nextPage, options) {
 
         // If page is not a page object fail fast with error
-        if(!(page.isPage && page.isPage())) {
+        if(!(nextPage.isPage && nextPage.isPage())) {
             throw new Error("z: cannot showPage() as page is not a page object");
         }
 
         this.ensureEl();
-        var isPageClosed = page.isClosed || _.isUndefined(page.$el);
-        var isDifferentPage = page !== this.currentView;
+        var isPageClosed = nextPage.isClosed || _.isUndefined(nextPage.$el);
+        var isDifferentPage = nextPage !== this.currentView;
 
         // This does not close() immediately, instead it defers to close after pagehide
         if (isDifferentPage) {
             this.closePage(this.currentView);
         }
 
-        page.render();
+        nextPage.render();
 
         if (isDifferentPage || isPageClosed) {
-            this.openPage(page.$el, options);
+            this.openPage(nextPage, options);
         }
-        this.currentView = page;
 
-        Marionette.triggerMethod.call(this, "show", page);
-        Marionette.triggerMethod.call(page, "show");
     },
 
     /**
      * NOTE: Internal method. Do not extend or replace without knowing the flow of events.
      * Open a new page with jqm options
      *
-     * @param $nextPageEl
+     * @param nextPage
      * @param options
      */
-    openPage: function($nextPageEl, options) {
+    openPage: function(nextPage, options) {
+
+        var $nextPageEl = nextPage.$el;
+        var self = this;
+
         // Append the page's element to the DOM first
         this.$el.append($nextPageEl);
+
+
+        // pagechange instead of pageshow because in case of persistent header/footer, they are moved out of
+        // page before animation and put back after animation, but that putting back doesn't happen on pageshow.
+        // pagechange is the right event.
+        // But pagechange seems to be fired on document and not on the page.
+        // TODO: Make this clean.
+        $(document).on("pagechange", function() {
+            console.log("on pagechange");
+
+            if($nextPageEl.is(":jqmData(iscroll='enable')")) {
+                console.log("OPEN: page is iscroll enabled");
+                if(nextPage.openScrolling) {
+                    console.log("OPEN: openScrolling available in page");
+                    nextPage.openScrolling();
+                }
+            }
+
+            self.currentView = nextPage;
+
+            Marionette.triggerMethod.call(self, "show", nextPage);
+            Marionette.triggerMethod.call(nextPage, "show");
+        });
 
         // TODO: Verify. Sometimes the page change is not happening properly without giving a tick to the browser.
         // Will be enabling and disabling timeout back and forth while testing this.
 //        setTimeout(function() {
-            $.mobile.changePage($nextPageEl, options);
+        console.log("before changePage");
+        $.mobile.changePage($nextPageEl, options);
+        console.log("after changePage");
 //        }, 0);
+
+
     },
 
     /**
@@ -75,19 +103,27 @@ _.extend(Marionette.Region.prototype, {
     closePage: function(currentPage) {
         if (!currentPage || currentPage.isClosed){ return; }
 
+        var $cuurentPageEl = currentPage.$el;
         var self = this;
-        currentPage.$el.on(jqmExt.event.PAGE_HIDE, function(event) {
+        $cuurentPageEl.on(jqmExt.event.PAGE_HIDE, function(event) {
             console.log("Closing Page with ID: " + this.id + " after pagehide");
 
             // call 'close' or 'remove', depending on which is found
             if (currentPage.close) { currentPage.close(); }
             else if (currentPage.remove) { currentPage.remove(); }
 
+            if($cuurentPageEl.is(":jqmData(iscroll='enable')")) {
+                console.log("CLOSE: page is iscroll enabled");
+                if(currentPage.closeScrolling) {
+                    console.log("CLOSE: closeScrolling available in page");
+                    currentPage.closeScrolling();
+                }
+            }
 
             // if there is no current page, close() will never get called,
             // if there was a current page, close() will be called on pagehide
-            // This method calls close() on region, which in turn triggers 'close' on region and view
-            Marionette.triggerMethod.call(this, "close");
+            // This method calls close() on region, which in turn triggers 'close' on region and (maybe) view
+            Marionette.triggerMethod.call(self, "close");
         });
     }
 

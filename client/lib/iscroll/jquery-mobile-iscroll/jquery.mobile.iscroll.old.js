@@ -1,4 +1,45 @@
+/*
+ * jQuery Mobile in a iScroll plugin
+ * Copyright (c) Kazuhiro Osawa
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * dependency: iScroll 3.7.1 http://cubiq.org/iscroll
+ */
+/*
 
+-head1 name
+
+iPhone like 'position fixed' header/footer manager
+
+=head1 EXAMPLE
+
+<div data-role="page" data-iscroll="enable" id="index">
+  <div data-role="header">
+    <h1>INDEX PAGE</h1>
+  </div>
+
+  <div data-role="content">
+	<div data-iscroll="scroller">
+      some contents.
+    </div>
+  </div>
+
+  <div data-role="footer" class="ui-bar">
+	<div data-role="navbar" class="ui-navbar">
+	  <ul class="ui-grid-b">
+	    <li class="ui-block-a"><a href="#home">home</a></li>
+	    <li class="ui-block-a"><a href="#timeline">timeline</a></li>
+	    <li class="ui-block-a"><a href="#message">message</a></li>
+	    <li class="ui-block-a"><a href="#bookmark">bookmark</a></li>
+	    <li class="ui-block-a"><a href="#config">config</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+
+
+=cut
+
+ */
 //(function($) {
 //$(function() {
 

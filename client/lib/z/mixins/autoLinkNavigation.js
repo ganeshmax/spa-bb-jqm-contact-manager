@@ -1,7 +1,7 @@
 Z.mixins.autoLinkNavigation = {
 
     events: {
-        "tap a:jqmData(btn-type='generic')": 'gotoPage'
+        "click a:jqmData(btn-type='generic')": 'gotoPage'
     },
 
     gotoPage: function(event) {
@@ -9,7 +9,7 @@ Z.mixins.autoLinkNavigation = {
 
         // This is to ensure that a ghost click doesn't happen
         // https://developers.google.com/mobile/articles/fast_buttons
-        event.preventDefault();
+//        event.preventDefault();
 
         var $clickedLink = $(event.target).closest("a");
 
