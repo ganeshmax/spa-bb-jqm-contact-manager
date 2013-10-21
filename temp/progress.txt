@@ -18,6 +18,10 @@ Test iscroll on div.content, if it does mid-scroll only. That will prove the nec
 
 Add content-wrapper and content-scroller classes to incorporate iscroll or iscrollview in the future.
 
+Make the mixins as interfaces and have class implementations for them. When a user adds the mixins to PageView, they can add the new'ed version.
+This is currently a problem because the scrollable object may hold state that could conflict while the same object is being mixed into multiple pages.
+(currently only one page exists at a time, but this design is not flexible/scalable). Test this problem using multiple instances of PageView before committing to a solution.
+
 MULTI APP CONTAINER:
 --------------------
 Marionette Application can be used to build a container app that holds multiple sub-applications.
@@ -80,3 +84,12 @@ This is because the whole page is actually getting scrolled using the default/na
 use only position:fixed for the headers and footers and no overflow:scroll concept, as it is not required only in a header and footer fixed
 scenario. This makes for good scrolling effect. We don't need iscroll unless you want to scroll parts of the content individually
 which may not be required in many usecases.
+
+autoScrollable Mixin:
+The primary purpose of this mixin is to enable scroller functionality for jquery mobile pages (specifically the content part).
+It is not used for all scrolling purposes (for example) scrolling of some deep div inside a page or other features.
+The Mixin is an interface (offering required methods) that can be implemented using any technology. The default one used is implemented using iscroll.
+The default one used data-iscroll="enabled" in a page markup to determine if scrolling is enabled and considers data-role=content as the default scroll wrapper.
+Later, the default mixin changed and no more needs data-iscroll=enabled in the page markup. Only the isScrollerEnabled() method needs to be implemented and return a boolean as appropriate.
+The isScrollerEnabled() may choose to use the page markup or attributes to determine if scrolling is enabled, or may determine that the scroller is enabled by the mere presence of the mixin.
+Other mixins may implement using different scroller libraries and different ways to represent if a page is scroll enabled or not and which content to scroll (wrapper/scroller) etc.

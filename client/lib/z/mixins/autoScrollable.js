@@ -1,7 +1,17 @@
+/**
+ * Interface & Implementation for any Scroller implementation that will make a JQM content auto scrollable.
+ * This implementation uses iScroll for scroller implementation, and consequently requires iscroll.js to be
+ * included in the page.
+ * Other implementations can choose to use a different scroller, but must implement the methods listed in this
+ * implementation if the scroller has to work as a mixin in any Z.jqm.PageView implementation
+ * @type {Object}
+ */
 Z.mixins.autoScrollable = {
 
     attributes: {
-        'data-iscroll': 'enable'
+        // TODO: Remove. Was used before to determine if scroller is enabled in a given page.
+        // Now, mere presence (inclusion) of this mixin confirms that scrolling is enabled in a page.
+//        'data-iscroll': 'enable'
     },
 
     safariWindowHeightFix: 34,
@@ -19,6 +29,8 @@ Z.mixins.autoScrollable = {
             overflow: 'hidden'
         });
 
+        console.log("Z.mixins.autoScrollable: Safari Window Fix Height: " + this.safariWindowHeightFix);
+
         var barHeight = 0;
         var $header = this.$el.find(":jqmData(role='header')");
         if ($header.length) {
@@ -27,7 +39,9 @@ Z.mixins.autoScrollable = {
                 "padding": 0,
                 "width": "100%"
             });
-            barHeight += $header.height();
+            var headerHeight = $header.height();
+            console.log("Z.mixins.autoScrollable: Header Height: " + headerHeight);
+            barHeight += headerHeight;
         }
 
         var $footer = this.$el.find(":jqmData(role='footer')");
@@ -37,8 +51,12 @@ Z.mixins.autoScrollable = {
                 "padding": 0,
                 "width": "100%"
             });
-            barHeight += $footer.height();
+            var footerHeight = $footer.height();
+            console.log("Z.mixins.autoScrollable: Footer Height: " + footerHeight);
+            barHeight += footerHeight;
         }
+
+        console.log("Z.mixins.autoScrollable: Header + Footer Height (Bar Height): " + barHeight);
 
         // Set the height of jqm content
         var $wrapper = this.$el.find(":jqmData(role='content')");
@@ -47,7 +65,15 @@ Z.mixins.autoScrollable = {
                 "z-index": 1,
                 "position": 'relative'
             });
-            $wrapper.height($(window).height() - barHeight - this.safariWindowHeightFix);
+
+            var windowHeight = $(window).height();
+            console.log("Z.mixins.autoScrollable: Window Height: " + windowHeight);
+
+            var contentWrapperHeight = windowHeight - barHeight - this.safariWindowHeightFix;
+            console.log("Z.mixins.autoScrollable: Setting Content Wrapper Height to: " + contentWrapperHeight);
+            $wrapper.height(contentWrapperHeight);
+
+            // TODO: Determine why this is required
             $wrapper.on('touchmove', function (e) { e.preventDefault(); });
         }
 
@@ -61,7 +87,6 @@ Z.mixins.autoScrollable = {
                 hScrollbar: false
             });
 //        }, 100);
-
         }
     },
 

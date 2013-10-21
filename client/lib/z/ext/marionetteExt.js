@@ -59,34 +59,30 @@ _.extend(Marionette.Region.prototype, {
         // Append the page's element to the DOM first
         this.$el.append($nextPageEl);
 
+        // "pagechange" is the correct event compared to "pageshow" because, during "pageshow", the persistent
+        // header/footer that was removed from the page for transition animation is not yet added into the page
+        // TODO: Check the data argument to verify if we are working with the correct page
+        // TODO: Check which element pagechange fires on to clean this event handler up
+        $(document).on(jqmExt.EVENT.PAGE_CHANGE, function(event, data) {
+            console.log("MarionetteExt: After changePage() is finished and the new page is displayed");
 
-        // pagechange instead of pageshow because in case of persistent header/footer, they are moved out of
-        // page before animation and put back after animation, but that putting back doesn't happen on pageshow.
-        // pagechange is the right event.
-        // But pagechange seems to be fired on document and not on the page.
-        // TODO: Make this clean.
-        // TODO: Check if using data-xxx check is better or mixin check is good enough
-        // TODO: Check this event and what is the parameter and if we need to check if the nextPage is the one that is changing
-        $(document).on(jqmExt.EVENT.PAGE_CHANGE, function() {
-            console.log("on pagechange");
-
-            if(nextPage.isScrollerEnabled() && nextPage.openScroller) {
+            if(nextPage.isScrollerEnabled && nextPage.isScrollerEnabled() && nextPage.openScroller) {
                 console.log("OPEN PAGE: Scroller Enabled and openScroller is available");
                 nextPage.openScroller();
             }
 
             self.currentView = nextPage;
 
+            // Calls onShow() on the region and view
             Marionette.triggerMethod.call(self, "show", nextPage);
             Marionette.triggerMethod.call(nextPage, "show");
         });
 
         // TODO: Verify. Sometimes the page change is not happening properly without giving a tick to the browser.
-        // Will be enabling and disabling timeout back and forth while testing this.
 //        setTimeout(function() {
-        console.log("before changePage");
-        $.mobile.changePage($nextPageEl, options);
-        console.log("after changePage");
+            console.log("before changePage");
+            $.mobile.changePage($nextPageEl, options);
+            console.log("after changePage");
 //        }, 0);
 
 
@@ -113,14 +109,15 @@ _.extend(Marionette.Region.prototype, {
             if (currentPage.close) { currentPage.close(); }
             else if (currentPage.remove) { currentPage.remove(); }
 
-            if(currentPage.isScrollerEnabled() && currentPage.closeScroller) {
+            if(currentPage.isScrollerEnabled && currentPage.isScrollerEnabled() && currentPage.closeScroller) {
                 console.log("CLOSE PAGE: Scroller Enabled and closeScroller is available");
                 currentPage.closeScroller();
             }
 
             // if there is no current page, close() will never get called,
             // if there was a current page, close() will be called on pagehide
-            // This method calls close() on region, which in turn triggers 'close' on region and (maybe) view
+            // This method calls close() on region, which in turn triggers 'close' on region only
+            // The onClose() on the view would have been called when currentPage.close() was called earlier
             Marionette.triggerMethod.call(self, "close");
         });
     }
