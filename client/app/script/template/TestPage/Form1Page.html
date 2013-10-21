@@ -3,31 +3,34 @@
     <h1>Contacts</h1>
 </div>
 
-<div data-role="content">
+<div data-role="content" class="z-wrapper">
 
-    <div class="content">
+    <div class="z-scroller">
 
-        <div data-role="fieldcontainer">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName">
+        <div class="z-content">
+            <div data-role="fieldcontainer">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+
+            <div data-role="fieldcontainer">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <div data-role="fieldcontainer">
+                <label for="birth">Your Birthdate:</label>
+                <input type="date" id="birth" name="birth">
+                <label for="favmonth">Your favorite month:</label>
+                <input type="month" id="favmonth" name="favmonth">
+            </div>
+
+            <button>Save</button>
         </div>
 
-        <div data-role="fieldcontainer">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName">
-
-            <label for="description">Description:</label>
-            <textarea id="description" name="description"></textarea>
-        </div>
-
-        <div data-role="fieldcontainer">
-            <label for="birth">Your Birthdate:</label>
-            <input type="date" id="birth" name="birth">
-            <label for="favmonth">Your favorite month:</label>
-            <input type="month" id="favmonth" name="favmonth">
-        </div>
-
-        <button>Save</button>
     </div>
 
 </div>

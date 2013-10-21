@@ -3,7 +3,7 @@ App.view.ContactListPageView = Z.jqm.PageView.extend({
     mixins: [
         Z.mixins.autoLinkNavigable,
         Z.mixins.autoLinkHighlightable,
-        Z.mixins.autoScrollable
+        Z.mixins.autoJqmPageContentScrollable
     ],
 
     template: Z.util.getTemplate("ContactListPage/ContactListPage.html"),

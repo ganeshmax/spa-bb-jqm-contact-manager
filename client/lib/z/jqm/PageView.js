@@ -1,3 +1,13 @@
+/**
+ * PageView is a Marionette Layout extension (a Backbone View) that represents any jquery-mobile page
+ * within a Z based BB application.
+ *
+ * To create a jqm page with Z, create a Custom PageView extending from PageView. Some of the important
+ * and mandatory attributes reguired for a jqm page are pre-filled using this base class.
+ * For all other features, you should consider using Z.mixins to mixin the required functionality
+ *
+ * @type {*|Object|Object}
+ */
 Z.jqm.PageView = Z.Layout.extend({
     tagName: 'div',
     id: null, // Give every page an id in initialize(). User may override while instantiating
@@ -9,7 +19,7 @@ Z.jqm.PageView = Z.Layout.extend({
 
     // Any page will have header, content and footer regions. This can be used by sub-classes to show()
     regions: {
-        content: "div[data-role=content]>div.content"
+        content: "div.z-wrapper>div.z-scroller>div.z-content"
     },
 
 
@@ -32,6 +42,10 @@ Z.jqm.PageView = Z.Layout.extend({
         Marionette.Layout.prototype.constructor.apply(this, Z.util.slice(arguments));
     },
 
+    /**
+     * TODO: Remove. Not used currently.
+     * @return {*}
+     */
     render: function(){
         var result = Marionette.Layout.prototype.render.apply(this, Z.util.slice(arguments));
         return result;

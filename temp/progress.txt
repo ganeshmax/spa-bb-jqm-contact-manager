@@ -93,3 +93,7 @@ The default one used data-iscroll="enabled" in a page markup to determine if scr
 Later, the default mixin changed and no more needs data-iscroll=enabled in the page markup. Only the isScrollerEnabled() method needs to be implemented and return a boolean as appropriate.
 The isScrollerEnabled() may choose to use the page markup or attributes to determine if scrolling is enabled, or may determine that the scroller is enabled by the mere presence of the mixin.
 Other mixins may implement using different scroller libraries and different ways to represent if a page is scroll enabled or not and which content to scroll (wrapper/scroller) etc.
+
+During addition of iscroll mixin, i wasn't able to get it working. The scrollbar that iscroll generated was extended beyond the content container, although the content
+container was properly sized and the div hierarchy was properly laid out compared to the iscroll documentation. The problem was that the content div was not position:relative.
+For some reason iscroll expects the content div to be position:relative. And that is exactly what i did in autoScrollable mixin to make that happen.

@@ -1,3 +1,11 @@
+/**
+ * Base class jqm ListView. Create a subclass or instantiate this class directly to use as jqm ListView implementation
+ * Extends Marionette's CollectionView to offer auto-population of listview's list items based on BB collection
+ * and models. Also, depends on Marionette's CollectionView for auto updating the listview when new models are
+ * added into the collection
+ *
+ * @type {*|Object|Object}
+ */
 Z.jqm.ListView  = Z.CollectionView.extend({
     tagName: 'ul',
     attributes: {
