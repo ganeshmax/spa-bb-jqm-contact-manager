@@ -30,5 +30,13 @@ App.view.ContactListPageView = Z.jqm.PageView.extend({
         event.preventDefault();
         console.log('Clicked Add Contact Button');
         App.body.showPage(new App.view.ContactEntryPageView(), {transition: 'pop'});
+    },
+
+    onShow: function() {
+        console.log("App.view.ContactListPageView.onShow()");
+    },
+
+    onClose: function() {
+        console.log("App.view.ContactListPageView.onClose()");
     }
 });

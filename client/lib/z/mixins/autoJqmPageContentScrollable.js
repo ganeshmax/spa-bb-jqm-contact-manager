@@ -17,10 +17,18 @@ Z.mixins.autoJqmPageContentScrollable = {
     safariWindowHeightFix: 34,
     myScroll: null,
 
+    /**
+     * If this mixin is present in a PageView instance it means that Scroller is enabled.
+     * TODO: Currently not using it. Consider removing it
+     * @return {Boolean}
+     */
     isScrollerEnabled: function() {
         return true;
     },
 
+    /**
+     * Initiates the scroller for the page content where this mixin is mixed-in
+     */
     openScroller: function() {
 
         // XXX: fix crumbled css in transition changePage for jquery mobile 1.0a3 in jquery.mobile.navigation.js
@@ -90,10 +98,35 @@ Z.mixins.autoJqmPageContentScrollable = {
         }
     },
 
+    /**
+     * Destroys the scroller for the page content where this mixin is mixed-in
+     */
     closeScroller: function() {
         if(this.myScroll) {
             this.myScroll.destroy();
         }
+    },
+
+    /**
+     * Attaches to the onShow event of the view that Region triggers. Initiates the scroller at this time.
+     * Does not have to check isScrollingEnabled(), openScroller etc, because it is assumed to be present in
+     * the same mixin
+     */
+    onShow: function() {
+        console.log("Z.mixins.autoJqmPageContentScrollable.onShow(): Opening Scroller");
+        this.openScroller();
+        console.log("Z.mixins.autoJqmPageContentScrollable.onShow(): Opened Scroller");
+    },
+
+    /**
+     * Attaches to the onClose event of the view that Region triggers. Destroys of scroller at this time.
+     * Does not have to check isScrollingEnabled(), closeScroller etc, because it is assumed to be present in
+     * the same mixin
+     */
+    onClose: function() {
+        console.log("Z.mixins.autoJqmPageContentScrollable.onClose(): Closing Scroller");
+        this.closeScroller();
+        console.log("Z.mixins.autoJqmPageContentScrollable.onClose(): Closed Scroller");
     }
 };
 

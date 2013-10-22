@@ -6,11 +6,8 @@ var jqmExt = {
         PAGE_CHANGE: 'pagechange'
     },
 
-    EXPR: {
-        ISCROLL_ENABLED: ":jqmData(iscroll='enable')"
-    },
-
     removeFrameworkFeatures: function() {
+
         // Disable handling links and form submissions using AJAX.
         // Disable hash listening and URLs will load as ordinary HTTP requests
         $.mobile.ajaxEnabled = false;
