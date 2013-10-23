@@ -43,6 +43,10 @@ _.extend(Marionette.Region.prototype, {
      */
     showPage: function(nextPage, options) {
 
+        // TODO: Extend this to resolve() only when both closePage and openPage succeeded. Now using only openPage
+        // TODO: Proper error handling so that reject() can be applied
+        var openPageDeferred = $.Deferred();
+
         // If page is not a PageView object fail fast with error
         if(!(nextPage.isPage && nextPage.isPage())) {
             throw new Error("Z: cannot showPage() as page is not a PageView object");
@@ -60,8 +64,10 @@ _.extend(Marionette.Region.prototype, {
         nextPage.render();
 
         if (isDifferentPage || isPageClosed) {
-            this.openPage(nextPage, options);
+            this.openPage(nextPage, options, openPageDeferred);
         }
+
+        return openPageDeferred.promise();
 
     },
 
@@ -72,7 +78,7 @@ _.extend(Marionette.Region.prototype, {
      * @param nextPage
      * @param options
      */
-    openPage: function(nextPage, options) {
+    openPage: function(nextPage, options, openPageDeferred) {
 
         var $nextPageEl = nextPage.$el;
         var self = this;
@@ -96,6 +102,8 @@ _.extend(Marionette.Region.prototype, {
             // Calls onShow() on the region and view
             Marionette.triggerMethod.call(self, "show", nextPage);
             Marionette.triggerMethod.call(nextPage, "show");
+
+            openPageDeferred.resolve();
         });
 
         // TODO: Verify. Sometimes the page change is not happening properly without giving a tick to the browser.

@@ -1,4 +1,4 @@
-Z.mixins.autoLinkNavigable = {
+Z.mixins.makePageLinkAutoNavigable = {
 
     events: {
         "click a:jqmData(btn-type='generic')": 'gotoPage'
@@ -29,10 +29,18 @@ Z.mixins.autoLinkNavigable = {
 
         console.log("Page to navigate: " + pageToNavigate);
 
-        App.body.showPage(new App.view[pageToNavigate](), {
-            transition: transition,
-            reverse: isReverse
-        });
+        console.log("Promise.start(): After showPage is complete");
+        $.mobile.loading('show');
+        setTimeout(function() {
+            App.body.showPage(new App.view[pageToNavigate](), {
+                transition: transition,
+                reverse: isReverse
+            }).done(function() {
+                    console.log("Promise.done(): After showPage is complete");
+                    $.mobile.loading('hide');
+            });
+        }, 1000);
+
     }
 
 };

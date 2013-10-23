@@ -27,6 +27,12 @@ var jqmExt = {
         // This will not show the scrolled position when the user goes back to the prev page
         $.mobile.minScrollBack = 999;
 
+
+        // Configure the JQM loading widget
+        $.mobile.loader.prototype.options.text = "Loading...";
+        $.mobile.loader.prototype.options.textVisible = true;
+        $.mobile.loader.prototype.options.theme = "a";
+        $.mobile.loader.prototype.options.html = "";
     }
 };
 

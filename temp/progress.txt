@@ -12,15 +12,12 @@ perform a setElement on every Marionette views so that the templates can be full
 Since I added data-id to the header to stop it from participating in the transition, If there are elements between pages which appear to have some transition effects during page transition,
 add a data-transition=none to them so that they don't happen. Verify this behaviour by adding header elements before coding in the data-transition.
 
-Change all div[data-role=content] style to jqmData style
-
-Test iscroll on div.content, if it does mid-scroll only. That will prove the necessity of div.content inside div[data-role=content].
-
-Add content-wrapper and content-scroller classes to incorporate iscroll or iscrollview in the future.
-
 Make the mixins as interfaces and have class implementations for them. When a user adds the mixins to PageView, they can add the new'ed version.
 This is currently a problem because the scrollable object may hold state that could conflict while the same object is being mixed into multiple pages.
 (currently only one page exists at a time, but this design is not flexible/scalable). Test this problem using multiple instances of PageView before committing to a solution.
+
+Added IScrollBasedPageScroller class to represent a class that can be instantiated and added as a mixin instead of directly having mixin objects.
+This way mixins can be configured before mixing them with target object. This is just an experiment right now. Decide how to proceed and keep it or remove it depending on the decision.
 
 MULTI APP CONTAINER:
 --------------------
@@ -97,3 +94,11 @@ Other mixins may implement using different scroller libraries and different ways
 During addition of iscroll mixin, i wasn't able to get it working. The scrollbar that iscroll generated was extended beyond the content container, although the content
 container was properly sized and the div hierarchy was properly laid out compared to the iscroll documentation. The problem was that the content div was not position:relative.
 For some reason iscroll expects the content div to be position:relative. And that is exactly what i did in autoScrollable mixin to make that happen.
+
+Change all div[data-role=content] style to jqmData style
+
+Test iscroll on div.content, if it does mid-scroll only. That will prove the necessity of div.content inside div[data-role=content].
+
+Add content-wrapper and content-scroller classes to incorporate iscroll or iscrollview in the future.
+
+JQM $.mobile.loading('show') was not displaying anything in various combinations. Then finally it worked after configuring its prototype with default values in mobileinit event.

@@ -6,7 +6,7 @@
  * implementation if the scroller has to work as a mixin in any Z.jqm.PageView implementation
  * @type {Object}
  */
-Z.mixins.autoJqmPageContentScrollable = {
+Z.mixins.makePageViewScrollable = {
 
     attributes: {
         // TODO: Remove. Was used before to determine if scroller is enabled in a given page.
@@ -37,7 +37,7 @@ Z.mixins.autoJqmPageContentScrollable = {
             overflow: 'hidden'
         });
 
-        console.log("Z.mixins.autoJqmPageContentScrollable: Safari Window Fix Height: " + this.safariWindowHeightFix);
+        console.log("Z.mixins.makePageViewScrollable: Safari Window Fix Height: " + this.safariWindowHeightFix);
 
         var barHeight = 0;
         var $header = this.$el.find(":jqmData(role='header')");
@@ -48,7 +48,7 @@ Z.mixins.autoJqmPageContentScrollable = {
                 "width": "100%"
             });
             var headerHeight = $header.height();
-            console.log("Z.mixins.autoJqmPageContentScrollable: Header Height: " + headerHeight);
+            console.log("Z.mixins.makePageViewScrollable: Header Height: " + headerHeight);
             barHeight += headerHeight;
         }
 
@@ -60,11 +60,11 @@ Z.mixins.autoJqmPageContentScrollable = {
                 "width": "100%"
             });
             var footerHeight = $footer.height();
-            console.log("Z.mixins.autoJqmPageContentScrollable: Footer Height: " + footerHeight);
+            console.log("Z.mixins.makePageViewScrollable: Footer Height: " + footerHeight);
             barHeight += footerHeight;
         }
 
-        console.log("Z.mixins.autoJqmPageContentScrollable: Header + Footer Height (Bar Height): " + barHeight);
+        console.log("Z.mixins.makePageViewScrollable: Header + Footer Height (Bar Height): " + barHeight);
 
         // Set the height of jqm content
         var $wrapper = this.$el.find(":jqmData(role='content')");
@@ -75,10 +75,11 @@ Z.mixins.autoJqmPageContentScrollable = {
             });
 
             var windowHeight = $(window).height();
-            console.log("Z.mixins.autoJqmPageContentScrollable: Window Height: " + windowHeight);
+            console.log("Z.mixins.makePageViewScrollable: Window Height: " + windowHeight);
+            console.log("Z.mixins.makePageViewScrollable: Screen Height: " + $.mobile.getScreenHeight());
 
             var contentWrapperHeight = windowHeight - barHeight - this.safariWindowHeightFix;
-            console.log("Z.mixins.autoJqmPageContentScrollable: Setting Content Wrapper Height to: " + contentWrapperHeight);
+            console.log("Z.mixins.makePageViewScrollable: Setting Content Wrapper Height to: " + contentWrapperHeight);
             $wrapper.height(contentWrapperHeight);
 
             // TODO: Determine why this is required
@@ -113,9 +114,9 @@ Z.mixins.autoJqmPageContentScrollable = {
      * the same mixin
      */
     onShow: function() {
-        console.log("Z.mixins.autoJqmPageContentScrollable.onShow(): Opening Scroller");
+        console.log("Z.mixins.makePageViewScrollable.onShow(): Opening Scroller");
         this.openScroller();
-        console.log("Z.mixins.autoJqmPageContentScrollable.onShow(): Opened Scroller");
+        console.log("Z.mixins.makePageViewScrollable.onShow(): Opened Scroller");
     },
 
     /**
@@ -124,10 +125,11 @@ Z.mixins.autoJqmPageContentScrollable = {
      * the same mixin
      */
     onClose: function() {
-        console.log("Z.mixins.autoJqmPageContentScrollable.onClose(): Closing Scroller");
+        console.log("Z.mixins.makePageViewScrollable.onClose(): Closing Scroller");
         this.closeScroller();
-        console.log("Z.mixins.autoJqmPageContentScrollable.onClose(): Closed Scroller");
+        console.log("Z.mixins.makePageViewScrollable.onClose(): Closed Scroller");
     }
+
 };
 
 

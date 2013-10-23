@@ -12,3 +12,5 @@ Z.Layout = Marionette.Layout;
 Z.CollectionView = Backbone.Marionette.CollectionView;
 Z.CompositeView = Backbone.Marionette.CompositeView;
 
+Z.extend = Backbone.Model.extend;
+Z.Events = Backbone.Events;

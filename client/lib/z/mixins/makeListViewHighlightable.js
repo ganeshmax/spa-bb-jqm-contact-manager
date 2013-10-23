@@ -1,4 +1,4 @@
-Z.mixins.autoLinkHighlightable = {
+Z.mixins.makeListViewHighlightable = {
 
     events: {
         "click ul:jqmData(role='listview') li": 'highlightLink'
