@@ -26,7 +26,6 @@ _.extend(App, {
 });
 
 $(function() {
-//    new ScrollFix($("#body")[0]);
     App.addRegions({
         body: "#body"
     });

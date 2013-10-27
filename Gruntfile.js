@@ -12,13 +12,13 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'client/',
+                        cwd: 'www/',
                         src: ['**'],
                         dest: 'dist/dist-grunt/'
                     },
                     {
                         expand: true,
-                        cwd: 'client/',
+                        cwd: 'www/',
                         src: ['index.html'],
                         dest: 'dist/dist-grunt/',
                         filter: 'isFile'
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    "client/app/script/template/Templates.js": ["client/app/script/template/**/*.html"]
+                    "www/src/script/template/Templates.js": ["www/src/script/template/**/*.html"]
                 }
             }
         }

@@ -4,7 +4,7 @@ var express = require('express'),
 var app = express();
 
 app.use(express.logger());
-app.use(express.static( path.join(__dirname, '../client') ));
+app.use(express.static( path.join(__dirname, '../www') ));
 //app.use(express.static( path.join(__dirname, '../dist-grunt') ));
 app.use(express.bodyParser());
 
