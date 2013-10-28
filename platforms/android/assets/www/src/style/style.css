@@ -1,0 +1,41 @@
+/* added when adding iscroll and iscrollview plugin */
+/*html, #body {*/
+    /*height: 100%;*/
+    /*overflow: hidden;*/
+/*}*/
+
+
+
+body {
+    background-color: #add8e6;
+}
+
+/* Glyph Icons */
+.nav-glyphish .ui-btn .ui-btn-inner {
+    padding-top: 40px !important;
+}
+.nav-glyphish .ui-btn .ui-icon {
+    width: 32px!important;
+    height: 32px!important;
+    margin-left: -15px !important;
+    box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    -webkit-border-radius: none !important;
+    border-radius: none !important;
+}
+#menuContacts .ui-icon { background:  url(../../lib/icons/whhg/icon-avatar.png) 50% 50% no-repeat; background-size: 30px 30px; }
+#menuGroups .ui-icon { background:  url(../../lib/icons/whhg/icon-groups-friends.png) 50% 50% no-repeat; background-size: 30px 30px;  }
+#menuFavorites .ui-icon { background:  url(../../lib/icons/whhg/icon-star.png) 50% 50% no-repeat;  background-size: 30px 30px; }
+#menuSettings .ui-icon { background:  url(../../lib/icons/whhg/icon-settingsfour-gearsalt.png) 50% 50% no-repeat;  background-size: 30px 30px; }
+
+.hide { display: none; }
+.show { display: block; }
+
+/* ContactEntryPage */
+div.view a#btnSaveContact, div.view a#btnCancelContact {
+    display: none;
+}
+div.edit a#btnEditContact {
+    display: none;
+}
