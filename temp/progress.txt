@@ -117,3 +117,4 @@ Adding Cordova:
    Running without localhost problem solved.
 4. Added console.log to deviceready and document ready.
    cordova plugin add org.apache.cordova.console. This enabled console.log() statements to be displayed in xcode console.
+5. Added android. Created idea android project. Logging is not working, but screens seem to be working.
