@@ -1,7 +1,7 @@
 Z.mixins.makePageLinkAutoNavigable = {
 
     events: {
-        "click a:jqmData(btn-type='generic')": 'gotoPage'
+        "tap a:jqmData(btn-type='generic')": 'gotoPage'
     },
 
     gotoPage: function(event) {
@@ -9,7 +9,7 @@ Z.mixins.makePageLinkAutoNavigable = {
 
         // This is to ensure that a ghost click doesn't happen
         // https://developers.google.com/mobile/articles/fast_buttons
-//        event.preventDefault();
+        event.preventDefault();
 
         var $clickedLink = $(event.target).closest("a");
 
@@ -39,7 +39,7 @@ Z.mixins.makePageLinkAutoNavigable = {
                     console.log("Promise.done(): After showPage is complete");
                     $.mobile.loading('hide');
             });
-        }, 1000);
+        }, 300);
 
     }
 
