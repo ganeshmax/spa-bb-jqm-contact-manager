@@ -35,8 +35,10 @@ _.extend(App, {
 $(function() {
     // If Cordova is available on page, then we should use deviceready event, otherwise, we should not
     if(window.device) {
+        console.log("Cordova in action: onDeviceReady()");
         document.addEventListener("deviceready", App.startWhenDeviceReady, false);
     } else {
+        console.log("Cordova not present: onDocumentReady()");
         App.startWhenDeviceReady();
     }
 });

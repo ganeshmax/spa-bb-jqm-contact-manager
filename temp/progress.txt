@@ -114,3 +114,5 @@ Adding Cordova:
 3. Modified Main.js to accomodate both deviceready and document.ready. No problem with missing cordova.js in web version. just a 404 for that request
    cordova platform add ios. Somehow it understood the launch and icon images even though i renamed the res to resource.
    Running without localhost problem solved.
+4. Added console.log to deviceready and document ready.
+   cordova plugin add org.apache.cordova.console. This enabled console.log() statements to be displayed in xcode console.
