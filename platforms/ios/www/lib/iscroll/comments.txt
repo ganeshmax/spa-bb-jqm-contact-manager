@@ -1,0 +1,6 @@
+iscroll 4.2.5:
+This is the latest version of the full blown iscroll. This is pretty much what will get used.
+
+iscroll-lite based on 4.1.6: (TODO: Remove)
+This is the iscroll lite version with just the scroller and no more. This seems to be based on an older version of
+iscroll. I am not using this at present. Can be removed, if i am not using it even after sometime.

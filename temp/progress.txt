@@ -111,3 +111,6 @@ Adding Cordova:
    Rename app to src, res to resource, img to image and put them all inside the src folder
    Modify Gruntfile.js and change the path. Verify index.html and verify path
    Verified grunt build and checked if Templates.js was generated at the right location and ran node app. Checked localhost:8000
+3. Modified Main.js to accomodate both deviceready and document.ready. No problem with missing cordova.js in web version. just a 404 for that request
+   cordova platform add ios. Somehow it understood the launch and icon images even though i renamed the res to resource.
+   Running without localhost problem solved.
