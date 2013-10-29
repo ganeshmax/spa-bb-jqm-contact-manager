@@ -1,3 +1,9 @@
+/**
+ * Add this mixin to any page to automatically enable highlighting of list items in a listview when tapped
+ *
+ * TODO: Enable tap instead of click
+ * @type {Object}
+ */
 Z.mixins.makeListViewHighlightable = {
 
     events: {
@@ -9,15 +15,6 @@ Z.mixins.makeListViewHighlightable = {
         var $clickedLink = $(event.target);
         $clickedLink.closest('ul').find('li').removeClass('ui-btn-active');
         $clickedLink.closest('li').addClass('ui-btn-active');
-
-//        $(event.target).closest('ul').find('li').attr('data-theme', 'c')
-//                        .removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b')
-//                        .addClass("ui-btn-up-c").addClass('ui-btn-hover-c');
-//
-//        $(event.target).attr('data-theme', 'b')
-//                        .removeClass("ui-btn-up-c").removeClass('ui-btn-hover-c')
-//                        .addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
-
     }
 
 };

@@ -40,6 +40,8 @@ _.extend(Marionette.Region.prototype, {
      * @param nextPage - the page to transition into using jqm $.mobile.changePage()
      * @param options - transition and other options that can be directly given to $.mobile.changePage().
      *                  supplied by the caller.
+     * @return promise - Will be resolved after the page transition is complete and open and close happened as per
+     *                   plan.
      */
     showPage: function(nextPage, options) {
 
@@ -77,6 +79,7 @@ _.extend(Marionette.Region.prototype, {
      *
      * @param nextPage
      * @param options
+     * @param openPageDeferred
      */
     openPage: function(nextPage, options, openPageDeferred) {
 

@@ -1,25 +1,24 @@
 /**
- * Interface & Implementation for any Scroller implementation that will make a JQM content auto scrollable.
- * This implementation uses iScroll for scroller implementation, and consequently requires iscroll.js to be
+ * Interface & Implementation for any Scrollers that will make a JQM content auto scrollable.
+ * This implementation uses iScroll as the scroller, and consequently requires iscroll.js to be
  * included in the page.
+ *
  * Other implementations can choose to use a different scroller, but must implement the methods listed in this
- * implementation if the scroller has to work as a mixin in any Z.jqm.PageView implementation
+ * interface if the scroller has to work as a mixin in any Z.jqm.PageView implementation
+ *
+ * Integrates with Marionette.Region.onShow() and onClose() events that are fired in Marionette.Views to
+ * open and close scrollers. If Marionette Views or Regions are not used, open and close scroller manually.
+ *
+ * Mere inclusion of this mixin confirms that scrolling is enabled in a page. No data-* attributes are required
  * @type {Object}
  */
 Z.mixins.makePageViewScrollable = {
-
-    attributes: {
-        // TODO: Remove. Was used before to determine if scroller is enabled in a given page.
-        // Now, mere presence (inclusion) of this mixin confirms that scrolling is enabled in a page.
-//        'data-iscroll': 'enable'
-    },
 
     safariWindowHeightFix: 34,
     myScroll: null,
 
     /**
      * If this mixin is present in a PageView instance it means that Scroller is enabled.
-     * TODO: Currently not using it. Consider removing it
      * @return {Boolean}
      */
     isScrollerEnabled: function() {

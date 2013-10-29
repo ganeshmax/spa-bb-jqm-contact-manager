@@ -1,3 +1,13 @@
+/**
+ * A temporary attempt at creating a Scroller mixin like Z.mixins.makePageViewScrollable but with customization.
+ * Consequently, a class has been implemented instead of a plain object.
+ * There are some issues that are still unresolved in this implementation like "instance prototype methods are not
+ * getting added into the Page/View while mixing in". I have worked around that problem by having all the methods
+ * directly on the instance instead of the instance's prototype, but that may not be a memory efficient solution.
+ *
+ * TODO: WIP
+ * @type {*}
+ */
 Z.mixins.IscrollBasedPageScroller = (function() {
     "use strict";
 
