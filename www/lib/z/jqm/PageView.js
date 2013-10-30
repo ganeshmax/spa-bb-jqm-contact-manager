@@ -12,7 +12,8 @@ Z.jqm.PageView = Z.Layout.extend({
     tagName: 'div',
     id: null, // Give every page an id in initialize(). User may override while instantiating
     attributes: {
-        'data-role': 'page'
+        'data-role': 'page',
+        'class': 'myclass'
     },
 
     type: 'page', // Not using this right now. May use it instead of isPage() or in combination later.
