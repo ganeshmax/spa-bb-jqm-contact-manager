@@ -4,5 +4,11 @@ App.view.List1PageView = Z.jqm.PageView.extend({
         Z.mixins.makeListViewHighlightable,
         Z.mixins.makePageViewScrollable
     ],
-    template: Z.util.getTemplate("TestPage/List1Page.html")
+    template: Z.util.getTemplate("TestPage/List1Page.html"),
+
+    onRender: function() {
+        this.footer.show(new App.view.FooterNavBarView({
+            activeItem: '#menuGroups'
+        }))
+    }
 });

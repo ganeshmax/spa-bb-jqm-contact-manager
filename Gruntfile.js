@@ -45,6 +45,13 @@ module.exports = function (grunt) {
                     "www/src/script/template/Templates.js": ["www/src/script/template/**/*.html"]
                 }
             }
+        },
+
+        watch: {
+            html: {
+                files: ['www/src/script/template/**/*.html'],
+                tasks: ['jst']
+            }
         }
 
     });

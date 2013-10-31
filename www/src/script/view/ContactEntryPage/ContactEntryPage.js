@@ -23,6 +23,12 @@ App.view.ContactEntryPageView = Z.jqm.PageView.extend({
         this.$el.addClass(this.options.mode)
     },
 
+    onRender: function() {
+        this.footer.show(new App.view.FooterNavBarView({
+            activeItem: '#menuContacts'
+        }))
+    },
+
 
     saveContact: function(event) {
         event.preventDefault();

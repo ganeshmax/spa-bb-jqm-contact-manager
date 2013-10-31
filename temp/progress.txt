@@ -19,6 +19,8 @@ This is currently a problem because the scrollable object may hold state that co
 Added IScrollBasedPageScroller class to represent a class that can be instantiated and added as a mixin instead of directly having mixin objects.
 This way mixins can be configured before mixing them with target object. This is just an experiment right now. Decide how to proceed and keep it or remove it depending on the decision.
 
+Still, not convinced of the added code developers will have to write to enable footer. TODO: Think about it
+
 MULTI APP CONTAINER:
 --------------------
 Marionette Application can be used to build a container app that holds multiple sub-applications.
@@ -118,3 +120,11 @@ Adding Cordova:
 4. Added console.log to deviceready and document ready.
    cordova plugin add org.apache.cordova.console. This enabled console.log() statements to be displayed in xcode console.
 5. Added android. Created idea android project. Logging is not working, but screens seem to be working.
+
+
+Added NavBarView.js as a common JQM Navbar. Apps can extend that NavBar to be re-used inside the Footer for every page
+so that they don't have to copy and paste the markup for the Footer everytime they add a new page as long as they are using a same tabbed footer.
+Similar to Tabbed application interface in iOS. This isn't forced though. They are still free to use the old way of adding data-role related markup to create a footer in every page.
+In any case, this new view approach means, tthat the apps can now encapsulate all their footer logic in one view class.
+This is an advantage that should be considered before resorting to other techniques that has lesser reuse potential.
+

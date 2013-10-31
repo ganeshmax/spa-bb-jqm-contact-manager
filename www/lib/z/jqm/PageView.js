@@ -20,7 +20,9 @@ Z.jqm.PageView = Z.Layout.extend({
 
     // Any page will have header, content and footer regions. This can be used by sub-classes to show()
     regions: {
-        content: "div.z-wrapper>div.z-scroller>div.z-content"
+        header: "div:jqmData(role='header')",
+        content: "div.z-wrapper>div.z-scroller>div.z-content",
+        footer: "div:jqmData(role='footer')"
     },
 
 

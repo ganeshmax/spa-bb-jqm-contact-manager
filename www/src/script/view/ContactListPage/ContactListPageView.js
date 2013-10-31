@@ -20,10 +20,15 @@ App.view.ContactListPageView = Z.jqm.PageView.extend({
         this.contactListView = new App.view.ContactListView({
             collection: contacts
         });
+
+        this.navBarView = new App.view.FooterNavBarView({
+            activeItem: '#menuContacts'
+        });
     },
 
     onRender: function() {
         this.content.show(this.contactListView);
+        this.footer.show(this.navBarView);
     },
 
     showAddContactPage: function(event) {
