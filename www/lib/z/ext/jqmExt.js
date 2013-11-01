@@ -27,6 +27,11 @@ var jqmExt = {
         // This will not show the scrolled position when the user goes back to the prev page
         $.mobile.minScrollBack = 999;
 
+        // Supporting CORS from packaged apps
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;
+        $.mobile.pushState = false;
+
 
         // Configure the JQM loading widget
         $.mobile.loader.prototype.options.text = "Loading...";
